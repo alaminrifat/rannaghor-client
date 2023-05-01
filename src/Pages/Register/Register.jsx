@@ -4,11 +4,11 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
     // const { createUser } = useContext(AuthContext);
-    const {createUser} = useContext(AuthContext);
-    const [status, setStatus] = useState(null); 
-    const [error, setError] = useState(null);      
+    const { createUser, updateInfo, setUser } = useContext(AuthContext);
+    const [status, setStatus] = useState(null);
+    const [error, setError] = useState(null);
 
-    const handleRegister = event =>{
+    const handleRegister = (event) => {
         setStatus(null);
         setError(null);
         // console.log('clicnke');
@@ -18,19 +18,42 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
+        if(!email || !password){
+            setError("Email or password Cann't be empty");
+            return;
+        }
+        if(email === password){
+            setError("Email and Password Cann't be same");
+            return;
+        }
+        if(password.length < 6){
+            setError("Password must be more then 6 character");
+            return;
+        }
         
+
         console.log(name, photo, email, password);
         createUser(email, password)
-            .then(result => {
-                const createdUser = result.user;
-                setStatus('Account Created!! Please Login');
-                
+            .then((result) => {
+                setUser(result.user);
+                setStatus("Account Created!! Please Login");
+                updateInfo(name, photo)
+                    .then((result) => {
+                        setStatus("Account Created!! Please Login");
+                    })
+                    .catch((error) => {
+                        setError(error.message);
+                    });
             })
-            .catch(error => {
-                setError(error.message);
-                
-            })
-    }
+            .catch((error) => {
+                if(error.message == "Firebase: Error (auth/email-already-in-use)."){
+                    setError("Email Already In Use!!");
+                }
+                else{
+                    setError(error.message);
+                }
+            });
+    };
     return (
         <div>
             <div className="hero min-h-screen bg-base-100">
@@ -44,7 +67,10 @@ const Register = () => {
                             rated Chef!
                         </p>
                     </div>
-                    <Form onSubmit={handleRegister} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <Form
+                        onSubmit={handleRegister}
+                        className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
+                    >
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -52,7 +78,7 @@ const Register = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    name='name'
+                                    name="name"
                                     placeholder="Your name"
                                     className="input input-bordered"
                                 />
@@ -63,7 +89,7 @@ const Register = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    name='email'
+                                    name="email"
                                     placeholder="Your email"
                                     className="input input-bordered"
                                 />
@@ -74,18 +100,20 @@ const Register = () => {
                                 </label>
                                 <input
                                     type="password"
-                                    name='password'
+                                    name="password"
                                     placeholder="Your Password"
                                     className="input input-bordered"
                                 />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Photo URL</span>
+                                    <span className="label-text">
+                                        Photo URL
+                                    </span>
                                 </label>
                                 <input
                                     type="text"
-                                    name='photo'
+                                    name="photo"
                                     placeholder="Your Photo URL"
                                     className="input input-bordered"
                                 />
@@ -98,16 +126,20 @@ const Register = () => {
                                 </Link>
                             </p>
                             <div className="text-center">
-                                {status ? <p className="text-teal-600">{status}</p> : <></>}
-                                {error ? <p className="text-red-500">{error}</p> : <></>}
+                                {status ? (
+                                    <p className="text-teal-600">{status}</p>
+                                ) : (
+                                    <></>
+                                )}
+                                {error ? (
+                                    <p className="text-red-500">{error}</p>
+                                ) : (
+                                    <></>
+                                )}
                             </div>
                             <div className="form-control mt-2">
-                                <button className="btn btn-error" type="submit">Signup</button>
-                                <button className="btn  bg-red-500 mt-4 hover:bg-red-600 border-none">
-                                    Signup with Google
-                                </button>
-                                <button className="btn bg-slate-600 mt-4 border-none">
-                                    Signup with GitHub
+                                <button className="btn btn-error" type="submit">
+                                    Signup
                                 </button>
                             </div>
                         </div>
