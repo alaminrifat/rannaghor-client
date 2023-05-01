@@ -14,8 +14,9 @@ const Navbar = () => {
                 <div className="flex-none">
                 <ul class="menu menu-horizontal px-1">
                     <li><Link>Home</Link></li>
-                    <li><Link>Home</Link></li>
-                    <li><Link>Home</Link></li>
+                    <li><Link>Blog</Link></li>
+                    {/* conditional Rendaring */}
+                    <li><Link>Login</Link></li>
                 </ul>
                     <div className="dropdown dropdown-end">
                         <div className="w-10 rounded-full">
