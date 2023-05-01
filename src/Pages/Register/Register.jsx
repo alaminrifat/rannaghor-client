@@ -1,7 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Form, Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
+    // const { createUser } = useContext(AuthContext);
+    const {createUser} = useContext(AuthContext);
+    const [status, setStatus] = useState(null); 
+    const [error, setError] = useState(null);      
+
+    const handleRegister = event =>{
+        setStatus(null);
+        setError(null);
+        // console.log('clicnke');
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        console.log(name, photo, email, password);
+        createUser(email, password)
+            .then(result => {
+                const createdUser = result.user;
+                setStatus('Account Created!! Please Login');
+                
+            })
+            .catch(error => {
+                setError(error.message);
+                
+            })
+    }
     return (
         <div>
             <div className="hero min-h-screen bg-base-100">
@@ -15,7 +44,7 @@ const Register = () => {
                             rated Chef!
                         </p>
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <Form onSubmit={handleRegister} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -23,6 +52,7 @@ const Register = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    name='name'
                                     placeholder="Your name"
                                     className="input input-bordered"
                                 />
@@ -33,6 +63,7 @@ const Register = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    name='email'
                                     placeholder="Your email"
                                     className="input input-bordered"
                                 />
@@ -43,6 +74,7 @@ const Register = () => {
                                 </label>
                                 <input
                                     type="password"
+                                    name='password'
                                     placeholder="Your Password"
                                     className="input input-bordered"
                                 />
@@ -53,6 +85,7 @@ const Register = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    name='photo'
                                     placeholder="Your Photo URL"
                                     className="input input-bordered"
                                 />
@@ -65,20 +98,20 @@ const Register = () => {
                                 </Link>
                             </p>
                             <div className="text-center">
-                                <p className="text-teal-600">Status Text</p>
-                                <p className="text-red-500">Error text</p>
+                                {status ? <p className="text-teal-600">{status}</p> : <></>}
+                                {error ? <p className="text-red-500">{error}</p> : <></>}
                             </div>
                             <div className="form-control mt-2">
-                                <button className="btn btn-error">Login</button>
+                                <button className="btn btn-error" type="submit">Signup</button>
                                 <button className="btn  bg-red-500 mt-4 hover:bg-red-600 border-none">
-                                    Login with Google
+                                    Signup with Google
                                 </button>
                                 <button className="btn bg-slate-600 mt-4 border-none">
-                                    Login with GitHub
+                                    Signup with GitHub
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </Form>
                 </div>
             </div>
         </div>
