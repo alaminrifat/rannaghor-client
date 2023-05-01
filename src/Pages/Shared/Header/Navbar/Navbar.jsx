@@ -9,10 +9,10 @@ const Navbar = () => {
                     <div className="w-16 rounded-full">
                         <img src={logo} />
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl font-cursive">RannaGhor</a>
+                    <a className="btn btn-ghost normal-case text-3xl font-cursive text-red-400">RannaGhor</a>
                 </div>
                 <div className="flex-none">
-                <ul class="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1">
                     <li><Link>Home</Link></li>
                     <li><Link>Blog</Link></li>
                     {/* conditional Rendaring */}

@@ -9,9 +9,10 @@ const Footer = () => {
                    <div className="w-16 bg-slate-300 rounded-full p-2">
                    <img src={logo} alt="" />
                    </div>
-                    <p>
+                    
                         <h1 className="text-xl">RannaGhor Cuisine Ltd.</h1>
                         <br />
+                        <p>
                         Providing reliable Recipes since 1992
                     </p>
                 </div>

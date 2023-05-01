@@ -8,6 +8,7 @@ import {
     signOut,
     updateProfile,
     signInWithPopup,
+    GithubAuthProvider,
 } from "firebase/auth";
 import app from "../Firebase/firebase.config";
 
@@ -16,6 +17,7 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const google_provider = new GoogleAuthProvider();
+const github_provider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -27,6 +29,9 @@ const AuthProvider = ({ children }) => {
     const googleSignIn = () => {
         return signInWithPopup(auth, google_provider);
     };
+    const loginWithEmail = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+      };
     const updateInfo = (name, url) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
@@ -40,6 +45,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         updateInfo,
         googleSignIn,
+        loginWithEmail,
     };
 
     return (
