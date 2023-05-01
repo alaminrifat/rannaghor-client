@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
     return (
         <div>
             <div className="hero min-h-screen bg-base-100">
                 <div className="hero-content flex-col lg:flex-row-reverse gap-16">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold text-error">
-                            Login now!
+                            Register now!
                         </h1>
                         <p className="py-6">
                             Please Login to get exciting recipeies from top
@@ -19,11 +19,21 @@ const Login = () => {
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Your name"
+                                    className="input input-bordered"
+                                />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="email"
+                                    placeholder="Your email"
                                     className="input input-bordered"
                                 />
                             </div>
@@ -32,16 +42,26 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input
+                                    type="password"
+                                    placeholder="Your Password"
+                                    className="input input-bordered"
+                                />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input
                                     type="text"
-                                    placeholder="password"
+                                    placeholder="Your Photo URL"
                                     className="input input-bordered"
                                 />
                             </div>
                             <p className="text-md">
                                 {" "}
-                                New here? Please{" "}
-                                <Link to={"/register"} className="text-indigo-500">
-                                    Register here
+                                Already have an account? Please{" "}
+                                <Link to={"/login"} className="text-indigo-500">
+                                    Login here
                                 </Link>
                             </p>
                             <div className="text-center">
@@ -65,4 +85,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
