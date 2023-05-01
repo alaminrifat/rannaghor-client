@@ -16,7 +16,7 @@ const Navbar = () => {
                     <li><Link>Home</Link></li>
                     <li><Link>Blog</Link></li>
                     {/* conditional Rendaring */}
-                    <li><Link>Login</Link></li>
+                    <li><Link to={'/login'}>Login</Link></li>
                 </ul>
                     <div className="dropdown dropdown-end">
                         <div className="w-10 rounded-full">
