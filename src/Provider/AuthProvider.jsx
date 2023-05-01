@@ -31,7 +31,10 @@ const AuthProvider = ({ children }) => {
     };
     const loginWithEmail = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
-      };
+    };
+    const githubSignIn = () =>{
+        return signInWithPopup(auth, github_provider);
+    }
     const updateInfo = (name, url) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
@@ -46,6 +49,7 @@ const AuthProvider = ({ children }) => {
         updateInfo,
         googleSignIn,
         loginWithEmail,
+        githubSignIn,
     };
 
     return (

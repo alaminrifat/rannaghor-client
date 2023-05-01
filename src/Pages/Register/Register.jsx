@@ -18,19 +18,18 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        if(!email || !password){
+        if (!email || !password) {
             setError("Email or password Cann't be empty");
             return;
         }
-        if(email === password){
+        if (email === password) {
             setError("Email and Password Cann't be same");
             return;
         }
-        if(password.length < 6){
+        if (password.length < 6) {
             setError("Password must be more then 6 character");
             return;
         }
-        
 
         console.log(name, photo, email, password);
         createUser(email, password)
@@ -46,13 +45,16 @@ const Register = () => {
                     });
             })
             .catch((error) => {
-                if(error.message == "Firebase: Error (auth/email-already-in-use)."){
+                if (
+                    error.message ==
+                    "Firebase: Error (auth/email-already-in-use)."
+                ) {
                     setError("Email Already In Use!!");
-                }
-                else{
+                } else {
                     setError(error.message);
                 }
             });
+        form.reset();
     };
     return (
         <div>

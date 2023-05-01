@@ -3,7 +3,7 @@ import { Form, Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
-    const { googleSignIn,setUser,loginWithEmail } = useContext(AuthContext);
+    const { googleSignIn,setUser,loginWithEmail,githubSignIn } = useContext(AuthContext);
 
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
@@ -14,6 +14,20 @@ const Login = () => {
         googleSignIn()
         .then(result=>{
             setStatus('Sign In Successfull');
+            setUser(result.user);
+        })
+        .catch(error =>{
+            setError(error.message)
+        })
+    }
+    const handleGithubSignIn = () =>{
+        setStatus(null);
+        setError(null);
+        githubSignIn()
+        .then(result=>{
+            setStatus('Sign In Successfull');
+            console.log(result);
+            console.log(result.user);
             setUser(result.user);
         })
         .catch(error =>{
@@ -36,6 +50,7 @@ const Login = () => {
         .catch(error=>{
             setError(error.message)
         })
+        form.reset();
     }
     return (
         <div>
@@ -98,7 +113,7 @@ const Login = () => {
                                 <button className="btn  bg-red-500 mt-4 hover:bg-red-600 border-none" onClick={handleGoogleSignIn}>
                                     Login with Google
                                 </button>
-                                <button className="btn bg-slate-600 mt-4 border-none">
+                                <button className="btn bg-slate-600 mt-4 border-none" onClick={handleGithubSignIn}>
                                     Login with GitHub
                                 </button>
                             </div>
