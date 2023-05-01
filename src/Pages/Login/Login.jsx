@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+    const { googleSignIn,setUser } = useContext(AuthContext);
+
+    const [status, setStatus] = useState(null);
+    const [error, setError] = useState(null);
+
+    const handleGoogleSignIn = () =>{
+        googleSignIn()
+        .then(result=>{
+            setStatus('Sign In Successfull');
+            setUser(result.user);
+        })
+        .catch(error =>{
+            setError(error.message)
+        })
+    }
     return (
         <div>
             <div className="hero min-h-screen bg-base-100">
@@ -45,12 +61,20 @@ const Login = () => {
                                 </Link>
                             </p>
                             <div className="text-center">
-                                <p className="text-teal-600">Status Text</p>
-                                <p className="text-red-500">Error text</p>
+                                {status ? (
+                                    <p className="text-teal-600">{status}</p>
+                                ) : (
+                                    <></>
+                                )}
+                                {error ? (
+                                    <p className="text-red-500">{error}</p>
+                                ) : (
+                                    <></>
+                                )}
                             </div>
                             <div className="form-control mt-2">
                                 <button className="btn btn-error">Login</button>
-                                <button className="btn  bg-red-500 mt-4 hover:bg-red-600 border-none">
+                                <button className="btn  bg-red-500 mt-4 hover:bg-red-600 border-none" onClick={handleGoogleSignIn}>
                                     Login with Google
                                 </button>
                                 <button className="btn bg-slate-600 mt-4 border-none">
