@@ -19,7 +19,7 @@ import slider3 from "../../../assets/slider/slider3.jpg";
 
 const Slider = () => {
     return (
-        <div className="object-center container mx-auto">
+        <div className="mt-4 mb-4 object-center container mx-auto">
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

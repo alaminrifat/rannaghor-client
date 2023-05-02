@@ -5,10 +5,12 @@ import { Outlet } from "react-router-dom";
 
 const Main = () => {
     return (
-        <div className="container mx-auto">
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            <Footer></Footer>
+        <div className="min-h-screen flex flex-col container mx-auto">
+            <Navbar  />
+            <main className="flex-grow">
+                <Outlet />
+            </main>
+            <Footer className="absolute bottom-0 w-full" />
         </div>
     );
 };

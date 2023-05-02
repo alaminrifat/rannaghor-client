@@ -4,9 +4,9 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
     return (
         <>
-            <div className="navbar bg-base-150">
+            <div className="navbar bg-base-150 ">
                 <div className="flex-1">
-                    <Link to={'/'}>
+                    <Link to={"/"}>
                         <div className="w-16 rounded-full">
                             <img src={logo} />
                         </div>
