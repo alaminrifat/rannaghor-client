@@ -1,8 +1,9 @@
 import React from "react";
 import { FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ChefCard = ({ chef }) => {
-    const { name, chef_pic_url, years_of_experience, num_recpies, likes } =
+    const { id,name, chef_pic_url, years_of_experience, num_recpies, likes } =
         chef;
     console.log(name);
     return (
@@ -13,17 +14,29 @@ const ChefCard = ({ chef }) => {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{name}</h2>
-                    <p className="text-lg"><span className="text-error font-semibold" >{years_of_experience}+</span> Years of Experience</p>
-                    <p className="text-lg"><span className="text-error font-semibold">{num_recpies}</span>  Exciting recipes</p>
+                    <p className="text-lg">
+                        <span className="text-error font-semibold">
+                            {years_of_experience}+
+                        </span>{" "}
+                        Years of Experience
+                    </p>
+                    <p className="text-lg">
+                        <span className="text-error font-semibold">
+                            {num_recpies}
+                        </span>{" "}
+                        Exciting recipes
+                    </p>
                     <div className="flex items-center justify-around mt-10">
                         <div className="flex items-center text-2xl gap-2 ">
                             <FaHeart className="text-red-400"></FaHeart>
                             {likes}
                         </div>
                         <div>
-                            <button className="btn rounded-full btn-error text-white ms-28">
-                                See Recipes
-                            </button>
+                            <Link to={`/recipe/${id}`}>
+                                <button className="btn rounded-full btn-error text-white ms-28">
+                                    See Recipes
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

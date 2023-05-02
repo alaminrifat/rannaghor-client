@@ -6,6 +6,7 @@ import Register from '../Pages/Register/Register';
 import Home from '../Pages/Home/Home/Home';
 import Blog from '../Pages/Blog/Blog';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
+import Recipes from '../Pages/Home/Recipes/Recipes';
 
 const router = createBrowserRouter([
     {
@@ -28,8 +29,12 @@ const router = createBrowserRouter([
             {
                 path:'blog',
                 element:<Blog></Blog>
-            }
-            ,
+            },
+            {
+                path:'recipe/:id',
+                element:<Recipes></Recipes>,
+                loader: ({params}) => fetch(`https://chef-recipe-hunter-server-alaminrifat.vercel.app/chef/${params.id}`)
+            },
             {
                 path:'/*',
                 element:<ErrorPage></ErrorPage>
