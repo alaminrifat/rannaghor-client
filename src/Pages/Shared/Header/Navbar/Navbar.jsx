@@ -1,24 +1,58 @@
 import React from "react";
 import logo from "./../../../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
     return (
-        < >
+        <>
             <div className="navbar bg-base-150">
                 <div className="flex-1">
-                    <div className="w-16 rounded-full">
-                        <img src={logo} />
-                    </div>
-                    <a className="btn btn-ghost normal-case text-3xl font-cursive text-red-400">RannaGhor</a>
+                    <Link to={'/'}>
+                        <div className="w-16 rounded-full">
+                            <img src={logo} />
+                        </div>
+                    </Link>
+                    <Link
+                        to={"/"}
+                        className="normal-case text-3xl font-cursive text-red-400"
+                    >
+                        RannaGhor
+                    </Link>
                 </div>
                 <div className="flex-none">
-                <ul className="menu menu-horizontal px-1">
-                    <li><Link>Home</Link></li>
-                    <li><Link>Blog</Link></li>
-                    {/* conditional Rendaring */}
-                    <li><Link to={'/login'}>Login</Link></li>
-                </ul>
-                    <div className="dropdown dropdown-end">
+                    <ul className="flex gap-6 px-1 text-lg ">
+                        <li>
+                            <NavLink
+                                to="/"
+                                className={({ isActive }) =>
+                                    isActive ? "active" : ""
+                                }
+                            >
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/blog"
+                                className={({ isActive }) =>
+                                    isActive ? "active" : ""
+                                }
+                            >
+                                Blog
+                            </NavLink>
+                        </li>
+                        {/* conditional Rendaring */}
+                        <li>
+                            <NavLink
+                                to="/login"
+                                className={({ isActive }) =>
+                                    isActive ? "active" : ""
+                                }
+                            >
+                                Login
+                            </NavLink>
+                        </li>
+                    </ul>
+                    <div className="dropdown dropdown-end ms-6">
                         <div className="w-10 rounded-full">
                             <img src={logo} />
                             {/* TODO: add user profile logo  */}

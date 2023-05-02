@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.active {
+    @apply font-semibold tracking-wide text-red-500 transition-colors duration-200;
+}
