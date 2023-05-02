@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import Recipe from './Recipe';
 
 const Recipes = () => {
     const { id } = useParams();
@@ -11,6 +12,8 @@ const Recipes = () => {
             {
                 console.log(chef.bio)
             }
+            {/* Recipe */}
+            <Recipe chef={chef}></Recipe>
         </div>
     );
 };
