@@ -8,7 +8,7 @@ const Recipes = () => {
     return (
         <div>
             {/* Banner - chef picture, chef name, a short bio/description, likes, number of recipes, and years of experience. */}
-            {id}
+            
             {
                 console.log(chef.bio)
             }
