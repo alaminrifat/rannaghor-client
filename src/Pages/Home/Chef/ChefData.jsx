@@ -18,7 +18,7 @@ const ChefData = () => {
                 </h1>
                 <TbChefHat className="text-center text-4xl text-red-400 rotate-12"></TbChefHat>
             </div>
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 my-10 ms-6">
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 my-10 ">
                 {chef.map((c) => (
                     <ChefCard key={c.key} chef={c}>
                         {c.name}
