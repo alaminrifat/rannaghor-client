@@ -7,6 +7,7 @@ import Home from '../Pages/Home/Home/Home';
 import Blog from '../Pages/Blog/Blog';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import Recipes from '../Pages/Home/Recipes/Recipes';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'recipe/:id',
-                element:<Recipes></Recipes>,
+                element:<PrivateRoute><Recipes></Recipes></PrivateRoute>,
                 loader: ({params}) => fetch(`https://chef-recipe-hunter-server-alaminrifat.vercel.app/chef/${params.id}`)
             },
             {
