@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import Rating from "react-rating";
+import Swal from "sweetalert2";
 
 const Recipe = ({ chef }) => {
+    const [isDisabled, setIsDisabled] = useState(false);
     const recipes = chef.recipes;
+    const handleFav = () => {
+        Swal.fire(
+            "Favourite?",
+            "This item added to your favourite.",
+            "success"
+        );
+        setIsDisabled(true);
+    };
 
     return (
         <>
@@ -111,7 +121,12 @@ const Recipe = ({ chef }) => {
                                     </div>
 
                                     <div>
-                                        <button className="btn p-4 btn-error">
+                                        <button
+                                            className="btn p-4 btn-error"
+                                            onClick={handleFav}
+                                            
+                                            disabled={isDisabled}
+                                        >
                                             <FaHeart className="text-white text-md">
                                                 {" "}
                                             </FaHeart>
@@ -122,12 +137,17 @@ const Recipe = ({ chef }) => {
                                 <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2 mt-4">
                                     <b>Ingredients :</b>
                                     {recipe.ingredients.map((i) => (
-                                        <p className="capitalize " key={i.name}>{i}, </p>
+                                        <p className="capitalize " key={i.name}>
+                                            {i},{" "}
+                                        </p>
                                     ))}
                                     etc.
                                 </div>
 
-                                <div className="mt-2"><b>Cooking Method: </b>{recipe.cooking_method}</div>
+                                <div className="mt-2">
+                                    <b>Cooking Method: </b>
+                                    {recipe.cooking_method}
+                                </div>
                             </div>
                         </div>
                     );

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
     createUserWithEmailAndPassword,
     getAuth,
@@ -21,6 +21,7 @@ const github_provider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const createUser = (email, password) => {
         // setLoading(true);
@@ -41,6 +42,21 @@ const AuthProvider = ({ children }) => {
             photoURL: url,
         });
     };
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth);
+    }
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth, loggedUser => {
+            console.log('logged in user inside auth state observer', loggedUser)
+            setUser(loggedUser);
+            setLoading(false);
+        })
+
+        return () => {
+            unsubscribe();
+        }
+    }, [])
 
     const authInfo = {
         user,
@@ -50,6 +66,7 @@ const AuthProvider = ({ children }) => {
         googleSignIn,
         loginWithEmail,
         githubSignIn,
+        logOut
     };
 
     return (

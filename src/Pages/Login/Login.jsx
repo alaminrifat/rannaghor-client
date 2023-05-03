@@ -3,62 +3,63 @@ import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
-    const { googleSignIn,setUser,loginWithEmail,githubSignIn } = useContext(AuthContext);
+    const { googleSignIn, setUser, loginWithEmail, githubSignIn } =
+        useContext(AuthContext);
 
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location?.state?.from?.pathname || '/'
-    
-    const handleGoogleSignIn = () =>{
+    const from = location?.state?.from?.pathname || "/";
+
+    const handleGoogleSignIn = () => {
         setStatus(null);
         setError(null);
         googleSignIn()
-        .then(result=>{
-            setStatus('Sign In Successfull');
-            setUser(result.user);
-            navigate(from);
-        })
-        .catch(error =>{
-            setError(error.message)
-        })
-    }
-    const handleGithubSignIn = () =>{
+            .then((result) => {
+                setStatus("Sign In Successfull");
+                setUser(result.user);
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
+    };
+    const handleGithubSignIn = () => {
         setStatus(null);
         setError(null);
         githubSignIn()
-        .then(result=>{
-            setStatus('Sign In Successfull');
-            console.log(result);
-            console.log(result.user);
-            setUser(result.user);
-            navigate(from);
-        })
-        .catch(error =>{
-            setError(error.message)
-        })
-    }
+            .then((result) => {
+                setStatus("Sign In Successfull");
+                console.log(result);
+                console.log(result.user);
+                setUser(result.user);
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
+    };
 
-    const hangleEmailLogin = event =>{
+    const hangleEmailLogin = (event) => {
         setStatus(null);
         setError(null);
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        loginWithEmail(email,password)
-        .then(result => {
-            setStatus('Sign In Successfull');
-            setUser(result.user);
-            navigate(from);
-        })
-        .catch(error=>{
-            setError(error.message)
-        })
+        loginWithEmail(email, password)
+            .then((result) => {
+                setStatus("Sign In Successfull");
+                setUser(result.user);
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
         form.reset();
-    }
+    };
     return (
         <div>
             <div className="hero min-h-screen bg-base-100">
@@ -72,7 +73,10 @@ const Login = () => {
                             rated Chef!
                         </p>
                     </div>
-                    <Form onSubmit={hangleEmailLogin} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <Form
+                        onSubmit={hangleEmailLogin}
+                        className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
+                    >
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -99,7 +103,10 @@ const Login = () => {
                             <p className="text-md">
                                 {" "}
                                 New here? Please{" "}
-                                <Link to={"/register"} className="text-indigo-500">
+                                <Link
+                                    to={"/register"}
+                                    className="text-indigo-500"
+                                >
                                     Register here
                                 </Link>
                             </p>
@@ -116,11 +123,19 @@ const Login = () => {
                                 )}
                             </div>
                             <div className="form-control mt-2">
-                                <button className="btn btn-error" type="submit">Login</button>
-                                <button className="btn  bg-red-500 mt-4 hover:bg-red-600 border-none" onClick={handleGoogleSignIn}>
+                                <button className="btn btn-error" type="submit">
+                                    Login
+                                </button>
+                                <button
+                                    className="btn  bg-red-500 mt-4 hover:bg-red-600 border-none"
+                                    onClick={handleGoogleSignIn}
+                                >
                                     Login with Google
                                 </button>
-                                <button className="btn bg-slate-600 mt-4 border-none" onClick={handleGithubSignIn}>
+                                <button
+                                    className="btn bg-slate-600 mt-4 border-none"
+                                    onClick={handleGithubSignIn}
+                                >
                                     Login with GitHub
                                 </button>
                             </div>
