@@ -3,8 +3,11 @@ import Slider from '../Slider/Slider';
 import ChefData from '../Chef/ChefData';
 import TopRecipies from '../TopRecipies/TopRecipies';
 import VisitUs from '../Visitus/VisitUs';
+import { useNavigation } from 'react-router-dom';
+
 
 const Home = () => {
+    
     return (
         <div>
             <Slider></Slider>

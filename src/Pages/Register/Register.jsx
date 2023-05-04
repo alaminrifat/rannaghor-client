@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
     // const { createUser } = useContext(AuthContext);
@@ -8,6 +9,7 @@ const Register = () => {
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
 
+    const navigate = useNavigate();
     const handleRegister = (event) => {
         setStatus(null);
         setError(null);
@@ -29,7 +31,7 @@ const Register = () => {
             return;
         }
 
-        console.log(name, photo, email, password);
+        // console.log(name, photo, email, password);
         createUser(email, password)
             .then((result) => {
                 setUser(result.user);
@@ -37,6 +39,12 @@ const Register = () => {
                 updateInfo(name, photo)
                     .then((result) => {
                         setStatus("Account Created!! Please Login");
+                        Swal.fire(
+                            "Registered Success",
+                            "Account Created Successfully",
+                            "success"
+                        );
+                        navigate('/')
                     })
                     .catch((error) => {
                         setError(error.message);

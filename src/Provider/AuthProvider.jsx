@@ -26,16 +26,19 @@ const AuthProvider = ({ children }) => {
     const [name, setName] = useState(null);
 
     const createUser = (email, password) => {
-        // setLoading(true);
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
     const googleSignIn = () => {
+        setLoading(true);
         return signInWithPopup(auth, google_provider);
     };
     const loginWithEmail = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     };
     const githubSignIn = () => {
+        setLoading(true);
         return signInWithPopup(auth, github_provider);
     };
     const updateInfo = (name, url) => {
@@ -50,10 +53,7 @@ const AuthProvider = ({ children }) => {
     };
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-            console.log(
-                "logged in user inside auth state observer",
-                loggedUser
-            );
+            
             setUser(loggedUser);
             setPhoto(loggedUser?.photoURL);
             setName(loggedUser?.displayName);

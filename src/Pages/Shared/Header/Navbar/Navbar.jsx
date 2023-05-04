@@ -118,6 +118,7 @@ const Navbar = () => {
                                 }
                             >
                                 Blog
+                                
                             </NavLink>
                         </li>
                         {/* conditional Rendaring */}
