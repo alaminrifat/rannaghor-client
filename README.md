@@ -1,7 +1,7 @@
 Live Website Link: https://chef-recipe-hunter-clien-e96df.web.app/
 
 
-* Project Description: * 
+**Project Description:** 
 - This project is about an indian cuisine Restaurent 
 - An user can visit Home page without login 
 - If a user want to see Chef's recipe and description he/she have to login first
