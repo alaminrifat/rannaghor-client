@@ -23,10 +23,7 @@ const Register = () => {
             setError("Email or password Cann't be empty");
             return;
         }
-        // if (email === password) {
-        //     setError("Email and Password Cann't be same");
-        //     return;
-        // }
+
         if (password.length < 6) {
             setError("Password must be more then 6 character");
             return;

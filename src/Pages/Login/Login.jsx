@@ -34,8 +34,6 @@ const Login = () => {
             .then((result) => {
                 setError(null);
                 setStatus("Sign In Successfull");
-                console.log(result);
-                console.log(result.user);
                 setUser(result.user);
                 navigate(from, { replace: true });
             })

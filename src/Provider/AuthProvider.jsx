@@ -35,9 +35,9 @@ const AuthProvider = ({ children }) => {
     const loginWithEmail = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
     };
-    const githubSignIn = () =>{
+    const githubSignIn = () => {
         return signInWithPopup(auth, github_provider);
-    }
+    };
     const updateInfo = (name, url) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
@@ -47,19 +47,22 @@ const AuthProvider = ({ children }) => {
     const logOut = () => {
         setLoading(true);
         return signOut(auth);
-    }
-    useEffect(()=>{
+    };
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-            console.log('logged in user inside auth state observer', loggedUser)
+            console.log(
+                "logged in user inside auth state observer",
+                loggedUser
+            );
             setUser(loggedUser);
-            setPhoto(loggedUser.photoURL);
-            setName(loggedUser.displayName);
+            setPhoto(loggedUser?.photoURL);
+            setName(loggedUser?.displayName);
             setLoading(false);
-        })
+        });
         return () => {
             unsubscribe();
-        }
-    }, [])
+        };
+    }, []);
 
     const authInfo = {
         user,
@@ -72,7 +75,7 @@ const AuthProvider = ({ children }) => {
         logOut,
         loading,
         photo,
-        name
+        name,
     };
 
     return (

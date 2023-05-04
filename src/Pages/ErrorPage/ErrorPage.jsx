@@ -1,23 +1,15 @@
 import React from "react";
 import { Link, useRouteError } from "react-router-dom";
 import { FaExclamationCircle } from "react-icons/fa";
-
+import errror_img from '../../../public/404.svg'
 const ErrorPage = () => {
     const error = useRouteError();
     const status = useRouteError();
     return (
-        <section className="flex items-center h-screen p-16 bg-gray-100 text-gray-900">
+        <section className="flex items-center h-screen p-16  text-gray-900">
             <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
                 <div className="max-w-md text-center">
-                    
-                    <h2 className="flex flex-col items-center mb-8 font-extrabold text-9xl text-red-500">
-                    <FaExclamationCircle/>
-                        <span className="sr-only">Error</span>
-                        {status || 404}
-                    </h2>
-                    <p className="text-2xl font-semibold md:text-3xl text-red-500 mb-8">
-                        {error?.message}
-                    </p>
+                <img src={errror_img} alt=""  className="w-96 mb-6"/>
                     <Link
                         to="/"
                         className="btn bg-red-500 border-none hover:bg-red-700"

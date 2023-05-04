@@ -121,7 +121,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         {/* conditional Rendaring */}
-                        {user?.email ? (
+                        {user ? (
                             <li>
                                 <button onClick={handleLogout}>Logout</button>
                             </li>
