@@ -22,6 +22,8 @@ const github_provider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [photo, setPhoto] = useState(null);
+    const [name, setName] = useState(null);
 
     const createUser = (email, password) => {
         // setLoading(true);
@@ -50,6 +52,8 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
             console.log('logged in user inside auth state observer', loggedUser)
             setUser(loggedUser);
+            setPhoto(loggedUser.photoURL);
+            setName(loggedUser.displayName);
             setLoading(false);
         })
         return () => {
@@ -66,7 +70,9 @@ const AuthProvider = ({ children }) => {
         loginWithEmail,
         githubSignIn,
         logOut,
-        loading
+        loading,
+        photo,
+        name
     };
 
     return (

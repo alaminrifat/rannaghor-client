@@ -9,23 +9,23 @@ const TopRecipies = () => {
                 <FaHamburger className="text-center text-4xl text-red-400 rotate-12"></FaHamburger>
             </div>
             <div className="ml-2 mr-2 lg:ml-0 lg:mr-0 grid grid-cols-1 md:grid-cols-4 my-6 gap-4">
-                <div class="relative block overflow-hidden rounded-xl bg-[url(https://i.ibb.co/nb14cwM/koshamangso.jpg)] bg-cover bg-center bg-no-repeat">
-                    <div class="absolute inset-0 bg-black/25"></div>
+                <div className="relative block overflow-hidden rounded-xl bg-[url(https://i.ibb.co/nb14cwM/koshamangso.jpg)] bg-cover bg-center bg-no-repeat">
+                    <div className="absolute inset-0 bg-black/25"></div>
 
-                    <div class="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
-                        <div class="sm:pt-18 pt-12 text-white lg:pt-24">
-                            <h3 class="text-xl font-bold sm:text-2xl">
+                    <div className="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
+                        <div className="sm:pt-18 pt-12 text-white lg:pt-24">
+                            <h3 className="text-xl font-bold sm:text-2xl">
                                 Kosha Mangsho
                             </h3>
 
-                            <p class="text-sm">Mutton</p>
+                            <p className="text-sm">Mutton</p>
                         </div>
 
-                        <span class="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white">
+                        <span className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white">
                             4.6
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 text-yellow-300"
+                                className="h-4 w-4 text-yellow-300"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                             >
@@ -35,23 +35,23 @@ const TopRecipies = () => {
                     </div>
                 </div>
 
-                <div class="relative block overflow-hidden rounded-xl bg-[url(https://i.ibb.co/m0kHRWd/biriyani.jpg)] bg-cover bg-center bg-no-repeat">
-                    <div class="absolute inset-0 bg-black/25"></div>
+                <div className="relative block overflow-hidden rounded-xl bg-[url(https://i.ibb.co/m0kHRWd/biriyani.jpg)] bg-cover bg-center bg-no-repeat">
+                    <div className="absolute inset-0 bg-black/25"></div>
 
-                    <div class="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
-                        <div class="sm:pt-18 pt-12 text-white lg:pt-24">
-                            <h3 class="text-xl font-bold sm:text-2xl">
+                    <div className="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
+                        <div className="sm:pt-18 pt-12 text-white lg:pt-24">
+                            <h3 className="text-xl font-bold sm:text-2xl">
                                 Biriyani
                             </h3>
 
-                            <p class="text-sm">Mutton</p>
+                            <p className="text-sm">Mutton</p>
                         </div>
 
-                        <span class="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white">
+                        <span className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white">
                             4.9
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 text-yellow-300"
+                                className="h-4 w-4 text-yellow-300"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                             >
@@ -60,23 +60,23 @@ const TopRecipies = () => {
                         </span>
                     </div>
                 </div>
-                <div class="relative block overflow-hidden rounded-xl bg-[url(https://i.ibb.co/Rp1W81X/roufish.png)] bg-cover bg-center bg-no-repeat">
-                    <div class="absolute inset-0 bg-black/25"></div>
+                <div className="relative block overflow-hidden rounded-xl bg-[url(https://i.ibb.co/Rp1W81X/roufish.png)] bg-cover bg-center bg-no-repeat">
+                    <div className="absolute inset-0 bg-black/25"></div>
 
-                    <div class="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
-                        <div class="sm:pt-18 pt-12 text-white lg:pt-24">
-                            <h3 class="text-xl font-bold sm:text-2xl">
+                    <div className="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
+                        <div className="sm:pt-18 pt-12 text-white lg:pt-24">
+                            <h3 className="text-xl font-bold sm:text-2xl">
                                 Rui Macher Jhol
                             </h3>
 
-                            <p class="text-sm">Fish</p>
+                            <p className="text-sm">Fish</p>
                         </div>
 
-                        <span class="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white">
+                        <span className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white">
                             4.8
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 text-yellow-300"
+                                className="h-4 w-4 text-yellow-300"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                             >
@@ -85,23 +85,23 @@ const TopRecipies = () => {
                         </span>
                     </div>
                 </div>
-                <div class="relative block overflow-hidden rounded-xl bg-[url(https://i.ibb.co/y5TWMTZ/Kacchi-Biryani.jpg)] bg-cover bg-center bg-no-repeat">
-                    <div class="absolute inset-0 bg-black/25"></div>
+                <div className="relative block overflow-hidden rounded-xl bg-[url(https://i.ibb.co/y5TWMTZ/Kacchi-Biryani.jpg)] bg-cover bg-center bg-no-repeat">
+                    <div className="absolute inset-0 bg-black/25"></div>
 
-                    <div class="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
-                        <div class="sm:pt-18 pt-12 text-white lg:pt-24">
-                            <h3 class="text-xl font-bold sm:text-2xl">
+                    <div className="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
+                        <div className="sm:pt-18 pt-12 text-white lg:pt-24">
+                            <h3 className="text-xl font-bold sm:text-2xl">
                                 Kacchi Biriyani
                             </h3>
 
-                            <p class="text-sm">Mutton</p>
+                            <p className="text-sm">Mutton</p>
                         </div>
 
-                        <span class="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white">
+                        <span className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white">
                             4.8
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 text-yellow-300"
+                                className="h-4 w-4 text-yellow-300"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                             >

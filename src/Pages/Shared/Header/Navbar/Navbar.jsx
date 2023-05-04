@@ -3,9 +3,12 @@ import logo from "./../../../../assets/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
+
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
-    // console.log(user.email);
+    const { name, user, logOut, photo } = useContext(AuthContext);
+    console.log(name);
     const handleLogout = () => {
         logOut()
             .then((result) => {
@@ -139,9 +142,25 @@ const Navbar = () => {
                 <div className="invisible lg:navbar-end  lg:visible">
                     <div className="avatar placeholder">
                         <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-                            <span>P</span>
+                            {user ? (
+                                <img
+                                    id="yes-element"
+                                    src={photo}
+                                    alt={name}
+                                />
+                            ) : (
+                                <span id="no-element">X</span>
+                            )}
                         </div>
                     </div>
+                    <Tooltip
+                        anchorSelect="#yes-element"
+                        content={name}
+                    />
+                    <Tooltip
+                        anchorSelect="#no-element"
+                        content='No User'
+                    />
                 </div>
             </div>
         </>
