@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const Register = () => {
     // const { createUser } = useContext(AuthContext);
-    const { createUser, updateInfo, setUser } = useContext(AuthContext);
+    const { createUser, updateInfo, setUser,logOut } = useContext(AuthContext);
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
 
@@ -41,10 +41,11 @@ const Register = () => {
                         setStatus("Account Created!! Please Login");
                         Swal.fire(
                             "Registered Success",
-                            "Account Created Successfully",
+                            "Now Please Login To get Access",
                             "success"
                         );
-                        navigate('/')
+                        logOut();
+                        navigate('/login')
                     })
                     .catch((error) => {
                         setError(error.message);

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useRouteError } from "react-router-dom";
 import { FaExclamationCircle } from "react-icons/fa";
-import errror_img from '../../../public/404.svg'
+import errror_img from '../../../src/assets/404.svg'
 const ErrorPage = () => {
     const error = useRouteError();
     const status = useRouteError();
