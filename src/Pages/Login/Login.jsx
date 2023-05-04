@@ -18,6 +18,7 @@ const Login = () => {
         setError(null);
         googleSignIn()
             .then((result) => {
+                setError(null);
                 setStatus("Sign In Successfull");
                 setUser(result.user);
                 navigate(from, { replace: true });
@@ -31,6 +32,7 @@ const Login = () => {
         setError(null);
         githubSignIn()
             .then((result) => {
+                setError(null);
                 setStatus("Sign In Successfull");
                 console.log(result);
                 console.log(result.user);
@@ -51,6 +53,7 @@ const Login = () => {
         const password = form.password.value;
         loginWithEmail(email, password)
             .then((result) => {
+                setError(null);
                 setStatus("Sign In Successfull");
                 setUser(result.user);
                 navigate(from, { replace: true });

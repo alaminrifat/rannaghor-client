@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "./../../../../assets/logo.png";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    // console.log(user.email);
+    const handleLogout = () => {
+        logOut()
+            .then((result) => {
+                Swal.fire("Logout", "LogOut Successfull", "success");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     return (
         <>
             <div className="navbar bg-base-100 mb-2 border-b-2 border-red-100">
@@ -47,16 +60,25 @@ const Navbar = () => {
                                     Blog
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink
-                                    to="/login"
-                                    className={({ isActive }) =>
-                                        isActive ? "active" : ""
-                                    }
-                                >
-                                    Login
-                                </NavLink>
-                            </li>
+
+                            {user?.email ? (
+                                <li>
+                                    <button onClick={handleLogout}>
+                                        Logout
+                                    </button>
+                                </li>
+                            ) : (
+                                <li>
+                                    <NavLink
+                                        to="/login"
+                                        className={({ isActive }) =>
+                                            isActive ? "active" : ""
+                                        }
+                                    >
+                                        Login
+                                    </NavLink>
+                                </li>
+                            )}
                         </ul>
                     </div>
                     <div className="flex items-center gap-4">
@@ -96,16 +118,22 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         {/* conditional Rendaring */}
-                        <li>
-                            <NavLink
-                                to="/login"
-                                className={({ isActive }) =>
-                                    isActive ? "active" : ""
-                                }
-                            >
-                                Login
-                            </NavLink>
-                        </li>
+                        {user?.email ? (
+                            <li>
+                                <button onClick={handleLogout}>Logout</button>
+                            </li>
+                        ) : (
+                            <li>
+                                <NavLink
+                                    to="/login"
+                                    className={({ isActive }) =>
+                                        isActive ? "active" : ""
+                                    }
+                                >
+                                    Login
+                                </NavLink>
+                            </li>
+                        )}
                     </ul>
                 </div>
                 <div className="invisible lg:navbar-end  lg:visible">
