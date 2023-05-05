@@ -8,7 +8,7 @@ import "react-tooltip/dist/react-tooltip.css";
 
 const Navbar = () => {
     const { name, user, logOut, photo } = useContext(AuthContext);
-    console.log(name);
+    // console.log(name);
     const handleLogout = () => {
         logOut()
             .then((result) => {
@@ -20,6 +20,7 @@ const Navbar = () => {
     };
     return (
         <>
+        
             <div className="navbar bg-base-100 mb-2 border-b-2 border-red-100">
                 <div className="navbar-start">
                     <div className="dropdown">
